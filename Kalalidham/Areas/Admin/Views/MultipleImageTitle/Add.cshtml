@@ -1,0 +1,135 @@
+﻿@model List<Kalalidham.Areas.Admin.Model.ImageMasterDomain>
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href=@Url.Action("Index","MultipleImageTitle")>Home</a></li>
+                    <li class="breadcrumb-item active">Add ImageTitle</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">View Images</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label"> Image Title <span style="color:red">*</span></label>
+                            <div class="col-sm-10">
+                                @Html.DropDownList("TitleId", new SelectList(ViewBag.imageTitles, "Id", "ImageTitle"),new {@class ="form-control",@id= "ddlTitle" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Images: <span style="color:red">*</span></label>
+                            <input id="fileInput" type="file" multiple>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success" id="btnSave">Save</button>
+                        <a href="@Url.Action("Index","MultipleImage")" class="btn btn-info" id="btnSave">Back to list</a>
+
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success" role="alert" id="success">
+                                Form submit successfully..!!
+                            </div>
+                            <div class="alert alert-danger" role="alert" id="failure">
+                                Please fill the required (*) data..!!
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    //Date and time picker
+
+    $("#failure").hide();
+    $("#success").hide();
+
+    var formdata = new FormData();
+
+    $("#btnSave").click(function () {
+        var res = true;
+        if (res == true) {
+            var model = {};
+            var fileInput = document.getElementById('fileInput');
+            for (i = 0; i < fileInput.files.length; i++) {
+                var sfilename = fileInput.files[i].name;
+                let srandomid = Math.random().toString(36).substring(7);
+                formdata.append(sfilename, fileInput.files[i]);
+
+            }
+            formdata.append('uploadername', $('#ddlTitle :selected').val());
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Add", "MultipleImageTitle")",
+                contentType: false,
+                processData: false, // Not to process data
+                data: formdata,
+                async: false,
+                success: function (result) {
+                    if (result) {
+                        var url = '@Url.Action("Index", "MultipleImageTitle")';
+                        window.location.href = url;
+                    }
+                    else {
+                        $("#failure").show();
+                        $("#failure").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#failure").slideUp(500);
+                        });
+                    }
+                }
+            });
+
+        }
+        else {
+            $("#failure").show();
+            $("#failure").fadeTo(2000, 500).slideUp(500, function () {
+                $("#failure").slideUp(500);
+            });
+        }
+    });
+    function validation() {
+        debugger;
+        var result = false;
+        if ($.trim($("#txtName").val()) != '') {
+            result = true;
+        }
+        else {
+            result = false;
+
+        }
+
+        return result;
+
+    }
+</script>

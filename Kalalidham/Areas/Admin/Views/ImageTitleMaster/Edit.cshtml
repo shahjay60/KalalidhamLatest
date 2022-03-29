@@ -1,0 +1,121 @@
+﻿@model Kalalidham.Data.tblImageMaster
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href=@Url.Action("Index","Video")>Home</a></li>
+                    <li class="breadcrumb-item active">Edit VideoURL</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit VideoURL</h3>
+                    </div>
+                    <input type="hidden" id="hdnId" value="@Model.Id" />
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Image Title <span style="color:red">*</span></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtName" placeholder="Names" value="@Model.ImageTitle">
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info" id="btnUpdate">Update</button>
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success" role="alert" id="success">
+                                Form submit successfully..!!
+                            </div>
+                            <div class="alert alert-danger" role="alert" id="failure">
+                                Please fill the required (*) data..!!
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $("#failure").hide();
+    $("#success").hide();
+
+    $("#btnUpdate").click(function () {
+        var res = validation();
+        if (res == true) {
+            var model = {};
+            model.ImageTitle = $("#txtName").val();
+
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Edit", "ImageTitleMaster")",
+                data: JSON.stringify(model),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result) {
+                        var url = '@Url.Action("Index", "ImageTitleMaster")';
+                        window.location.href = url;
+                    }
+                    else {
+                        $("#failure").show();
+                        $("#failure").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#failure").slideUp(500);
+                        });
+                    }
+                }
+            });
+
+        }
+        else {
+            $("#failure").show();
+            $("#failure").fadeTo(2000, 500).slideUp(500, function () {
+                $("#failure").slideUp(500);
+            });
+        }
+    });
+    function validation() {
+        debugger;
+        var result = false;
+        if ($.trim($("#txtName").val()) != '') {
+            result = true;
+        }
+        else {
+            result = false;
+
+        }
+
+        return result;
+
+    }
+</script>

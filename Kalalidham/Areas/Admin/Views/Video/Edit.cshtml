@@ -1,0 +1,175 @@
+﻿@model Kalalidham.Data.tblVideo
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href=@Url.Action("Index","Video")>Home</a></li>
+                    <li class="breadcrumb-item active">Edit VideoURL</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-info">
+                    <div class="card-header">
+                        <h3 class="card-title">Edit VideoURL</h3>
+                    </div>
+                    <input type="hidden" id="hdnId" value="@Model.Id" />
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="inputEmail3" class="col-sm-2 col-form-label">Title <span style="color:red">*</span></label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtName" placeholder="Names" value="@Model.VideoTitle">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">VideoURL <span style="color:red">*</span> </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="txtVideo" placeholder="Price" value="@Model.VideoLink">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputPassword3" class="col-sm-2 col-form-label">IsLiveDarshan <span style="color:red">*</span></label>
+
+                            @if (Model.IsLiveDarshan == true)
+                            {
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="IsLiveDarshan" id="inlineRadio1" value="Yes" checked>
+                                    <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="IsLiveDarshan" id="inlineRadio2" value="No">
+                                    <label class="form-check-label" for="inlineRadio2">No</label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="IsLiveDarshan" id="inlineRadio1" value="Yes">
+                                    <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="IsLiveDarshan" id="inlineRadio2" value="No" checked>
+                                    <label class="form-check-label" for="inlineRadio2">No</label>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info" id="btnUpdate">Update</button>
+                    </div>
+                    <br />
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success" role="alert" id="success">
+                                Form submit successfully..!!
+                            </div>
+                            <div class="alert alert-danger" role="alert" id="failure">
+                                Please fill the required (*) data..!!
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-footer -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $("#failure").hide();
+    $("#success").hide();
+
+    $("#btnUpdate").click(function () {
+        var res = validation();
+        if (res == true) {
+            var model = {};
+            model.VideoTitle = $("#txtName").val();
+            model.VideoLink = $("#txtVideo").val();
+            if ($('input[name="IsLiveDarshan"]:checked').val() == "Yes")
+                model.IsLiveDarshan = true;
+            else
+                model.IsLiveDarshan = false;
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Edit", "Video")",
+                data: JSON.stringify(model),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result) {
+                        var url = '@Url.Action("Index", "Video")';
+                        window.location.href = url;
+                    }
+                    else {
+                        $("#failure").show();
+                        $("#failure").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#failure").slideUp(500);
+                        });
+                    }
+                }
+            });
+
+        }
+        else {
+            $("#failure").show();
+            $("#failure").fadeTo(2000, 500).slideUp(500, function () {
+                $("#failure").slideUp(500);
+            });
+        }
+    });
+    function validation() {
+        debugger;
+        var result = false;
+        if ($.trim($("#txtName").val()) != '') {
+            result = true;
+        }
+        else {
+            result = false;
+
+        }
+
+        if ($.trim($("#txtVideo").val()) != '') {
+            result = true;
+        }
+        else {
+            result = false;
+
+        }
+
+        if ($('input[name="IsLiveDarshan"]:checked').length != 0) {
+            result = true;
+        }
+        else {
+            result = false;
+
+        }
+
+        return result;
+
+    }
+</script>
