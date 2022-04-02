@@ -1,0 +1,50 @@
+﻿@model Kalalidham.Data.tblVideo
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Live Darshan</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href=@Url.Action("Index","Home")>Home</a></li>
+                    <li class="breadcrumb-item active">Live Darshan</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Live Darshan</h1>
+                </div>
+            </div>
+        </div>
+       
+        <div class="row">
+            @if (Model != null)
+            {
+            <div class="d-flex justify-content-center">
+                <div class="blog-box">
+                    <div class="blog-img">
+                        <iframe width="500" height="500" src="@Model.VideoLink.Replace("watch?v=", "embed/")" title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                    <div class="blog-content">
+                        <div class="title-blog" style="text-align:center;">
+                            <h3>@Model.VideoTitle</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+

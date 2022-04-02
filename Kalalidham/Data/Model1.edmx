@@ -16,6 +16,14 @@
           <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="tblDailyDarshan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VideoURL" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="tblImageMaster">
           <Key>
             <PropertyRef Name="Id" />
@@ -68,6 +76,7 @@ warning 6002: The table/view 'Kalalidham.dbo.tblUserActivation' does not have a 
         </Function>
         <EntityContainer Name="KalalidhamModelStoreContainer">
           <EntitySet Name="tblContact" EntityType="Self.tblContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDailyDarshan" EntityType="Self.tblDailyDarshan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblImageMaster" EntityType="Self.tblImageMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMultiImage" EntityType="Self.tblMultiImage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
@@ -132,6 +141,7 @@ warning 6002: The table/view 'Kalalidham.dbo.tblUserActivation' does not have a 
           </FunctionImport>
           <EntitySet Name="tblVideos" EntityType="KalalidhamModel.tblVideo" />
           <EntitySet Name="tblContacts" EntityType="KalalidhamModel.tblContact" />
+          <EntitySet Name="tblDailyDarshans" EntityType="KalalidhamModel.tblDailyDarshan" />
         </EntityContainer>
         <EntityType Name="tblVideo">
           <Key>
@@ -153,6 +163,14 @@ warning 6002: The table/view 'Kalalidham.dbo.tblUserActivation' does not have a 
           <Property Name="Number" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Subject" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblDailyDarshan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VideoURL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -218,6 +236,15 @@ warning 6002: The table/view 'Kalalidham.dbo.tblUserActivation' does not have a 
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDailyDarshans">
+            <EntityTypeMapping TypeName="KalalidhamModel.tblDailyDarshan">
+              <MappingFragment StoreEntitySet="tblDailyDarshan">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="VideoURL" ColumnName="VideoURL" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

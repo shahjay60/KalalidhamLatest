@@ -11,6 +11,7 @@
         <EntityTypeShape EntityType="KalalidhamModel.tblUserActivation" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KalalidhamModel.tblVideo" Width="1.5" PointX="3.375" PointY="3.75" />
         <EntityTypeShape EntityType="KalalidhamModel.tblContact" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="KalalidhamModel.tblDailyDarshan" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

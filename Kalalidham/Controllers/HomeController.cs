@@ -16,6 +16,7 @@ namespace Kalalidham.Controllers
         public ActionResult Index()
         {
             ViewBag.VideoData = usersEntities.tblVideos.ToList();
+            ViewBag.ImageDatas = usersEntities.tblMultiImages.Where(x=>x.ImageTitleId!=0).ToList();
             return View();
         }
 

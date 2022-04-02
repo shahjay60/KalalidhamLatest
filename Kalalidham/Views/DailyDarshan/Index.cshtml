@@ -1,4 +1,4 @@
-﻿@model List<Kalalidham.Models.GalleryTitleMaster>
+﻿@model Kalalidham.Data.tblVideo
 @{
     ViewBag.Title = "Index";
 }
@@ -7,10 +7,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2>Gallery</h2>
+                <h2>Daily Darshan</h2>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href=@Url.Action("Index","Home")>Home</a></li>
-                    <li class="breadcrumb-item active">Gallery</li>
+                    <li class="breadcrumb-item active">Daily Darshan</li>
                 </ul>
             </div>
         </div>
@@ -21,24 +21,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Our Gallery</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                    <h1>Daily Darshan</h1>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="special-menu text-center">
-                    <div class="button-group filter-button-group">
-                        <button class="active" data-filter="*">All</button>
-                        @foreach (var item in Model)
-                        {
-                            <button data-filter=".@item.Title">@item.Title</button>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <div class="row special-list">
             @foreach (var item in Model)

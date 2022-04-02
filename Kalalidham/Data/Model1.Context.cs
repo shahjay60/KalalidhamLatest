@@ -33,6 +33,7 @@ namespace Kalalidham.Data
         public virtual DbSet<tblUserActivation> tblUserActivations { get; set; }
         public virtual DbSet<tblVideo> tblVideos { get; set; }
         public virtual DbSet<tblContact> tblContacts { get; set; }
+        public virtual DbSet<tblDailyDarshan> tblDailyDarshans { get; set; }
     
         public virtual int Validate_User(string username, string password)
         {
