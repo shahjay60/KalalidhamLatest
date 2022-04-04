@@ -39,7 +39,6 @@ namespace Kalalidham.Areas.Admin.Controllers
                 return Json(false, JsonRequestBehavior.AllowGet);
             }
         }
-
         [HttpGet]
         public ActionResult Edit(int id)
         {

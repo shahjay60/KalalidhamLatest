@@ -34,6 +34,13 @@ namespace Kalalidham.Controllers
             return View();
         }
 
+        public ActionResult Invitation()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
         public ActionResult SendEmail(tblContact mdata)
         {
 

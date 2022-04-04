@@ -14,8 +14,7 @@ namespace Kalalidham.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.VideoData = usersEntities.tblVideos.ToList();
-
+            ViewBag.VideoData = usersEntities.tblDailyDarshans.ToList();
             return View();
         }
     }
