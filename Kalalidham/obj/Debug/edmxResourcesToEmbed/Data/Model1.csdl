@@ -14,6 +14,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ImageTitleId" Type="Int32" Nullable="false" />
     <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Datetime" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>

@@ -17,5 +17,6 @@ namespace Kalalidham.Data
         public int Id { get; set; }
         public int ImageTitleId { get; set; }
         public string Image { get; set; }
+        public Nullable<System.DateTime> Datetime { get; set; }
     }
 }

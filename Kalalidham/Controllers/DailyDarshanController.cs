@@ -14,8 +14,10 @@ namespace Kalalidham.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.VideoData = usersEntities.tblDailyDarshans.ToList();
-            return View();
+            int imgid = usersEntities.tblImageMasters.Where(x => x.ImageTitle == "Daily Darshan")
+                .Select(x => x.Id).FirstOrDefault();
+            var data = usersEntities.tblMultiImages.Where(x => x.ImageTitleId == imgid).ToList();
+            return View(data);
         }
     }
 }

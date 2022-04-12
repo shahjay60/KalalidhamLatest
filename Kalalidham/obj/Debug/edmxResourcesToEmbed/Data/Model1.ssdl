@@ -33,6 +33,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ImageTitleId" Type="int" Nullable="false" />
     <Property Name="Image" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Datetime" Type="datetime" />
   </EntityType>
   <EntityType Name="tblUser">
     <Key>
@@ -46,7 +47,7 @@
     <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'Kalalidham.dbo.tblUserActivation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'Kalali.dbo.tblUserActivation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="tblUserActivation">
     <Key>
       <PropertyRef Name="UserId" />

@@ -60,6 +60,7 @@ namespace Kalalidham.Areas.Admin.Controllers
                     file.SaveAs(fname);
                     mdata.ImageTitleId = Convert.ToInt32(uname);
                     mdata.Image = file.FileName;
+                    mdata.Datetime = DateTime.Now;
                     usersEntities.tblMultiImages.Add(mdata);
                     usersEntities.SaveChanges();
                 }
@@ -100,6 +101,7 @@ namespace Kalalidham.Areas.Admin.Controllers
                 usersEntities.tblMultiImages.Remove(data);
                 usersEntities.SaveChanges();
 
+                mData.Datetime = DateTime.Now;
                 usersEntities.tblMultiImages.Add(mData);
                 usersEntities.SaveChanges();
                 return Json(true, JsonRequestBehavior.AllowGet);

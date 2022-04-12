@@ -641,6 +641,17 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Uploads\2.jpeg" />
+    <Content Include="Uploads\287-2876128_600-pixels-by-400-pixels-hd-png-download.png" />
+    <Content Include="Uploads\about-img.jpg" />
+    <Content Include="Uploads\add-img-01.jpg" />
+    <Content Include="Uploads\add-img-02.jpg" />
+    <Content Include="Uploads\all-bg-title.jpg" />
+    <Content Include="Uploads\apple-touch-icon.png" />
+    <Content Include="Uploads\instagram-img-03.jpg" />
+    <Content Include="Uploads\instagram-img-04.jpg" />
+    <Content Include="Uploads\instagram-img-05.jpg" />
+    <Content Include="Uploads\instagram-img-06.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -664,7 +675,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

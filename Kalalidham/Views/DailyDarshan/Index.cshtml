@@ -1,4 +1,5 @@
-﻿@model Kalalidham.Data.tblVideo
+﻿@model List<Kalalidham.Data.tblMultiImage>
+
 @{
     ViewBag.Title = "Index";
 }
@@ -30,16 +31,19 @@
         <div class="row special-list">
             @foreach (var item in Model)
             {
-                foreach (var item1 in item.MultiImageList)
-                {
-                    <div class="col-lg-3 col-md-6 special-grid @item.Title">
-                        <div class="products-single fix">
-                            <div class="box-img-hover">
-                                <img src="Uploads/@item1.Image" class="img-fluid" alt="Image">
-                            </div>
-                        </div>
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        @if (@item.Image == null)
+                        {
+                            <img src="~/Uploads/287-2876128_600-pixels-by-400-pixels-hd-png-download.png" class="img-fluid" alt="Image" height="400px;" width="400px">
+
+                        }
+                        else
+                        {
+                            <img src="Uploads/@item.Image" class="img-fluid" alt="Image" height="400px;" width="400px">
+                        }
                     </div>
-                }
+                </div>
             }
         </div>
     </div>

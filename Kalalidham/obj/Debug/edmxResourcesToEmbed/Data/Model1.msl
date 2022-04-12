@@ -12,6 +12,7 @@
     <EntitySetMapping Name="tblMultiImages">
       <EntityTypeMapping TypeName="KalalidhamModel.tblMultiImage">
         <MappingFragment StoreEntitySet="tblMultiImage">
+          <ScalarProperty Name="Datetime" ColumnName="Datetime" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ImageTitleId" ColumnName="ImageTitleId" />
           <ScalarProperty Name="Image" ColumnName="Image" />

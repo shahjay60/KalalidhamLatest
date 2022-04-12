@@ -15,7 +15,7 @@ namespace Kalalidham.Controllers
         KalalidhamEntities usersEntities = new KalalidhamEntities();
         public ActionResult Index()
         {
-            ViewBag.VideoData = usersEntities.tblVideos.ToList();
+            ViewBag.VideoData = usersEntities.tblVideos.ToList().Take(4);
             ViewBag.ImageDatas = usersEntities.tblMultiImages.Where(x=>x.ImageTitleId!=0).ToList();
             return View();
         }
