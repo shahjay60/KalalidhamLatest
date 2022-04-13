@@ -1,6 +1,5 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@{ ViewBag.Title = "Home Page"; }
+
 <!-- End Main Top -->
 <!-- Start Slider -->
 <div id="slides-shop" class="cover-slides">
@@ -9,10 +8,10 @@
             <img src="~/Content/images/Image1.jpeg" alt="">
         </li>
         <li class="text-center">
-            <img src="~/Content/images/Image1.jpeg" alt="">
+            <img src="~/Content/images/IMG-20220408-WA0001.jpg" alt="">
         </li>
         <li class="text-center">
-            <img src="~/Content/images/Image1.jpeg" alt="">
+            <img src="~/Content/images/IMG-20220408-WA0002.jpg" alt="">
         </li>
     </ul>
     <div class="slides-navigation">
@@ -21,6 +20,7 @@
     </div>
 </div>
 <!-- End Slider -->
+<embed src="/html/Kalimba.mp3" loop="true" autostart="true" width="2" height="0">
 
 <div class="categories-shop">
     <div class="container">
@@ -67,40 +67,46 @@
         <div class="row">
             @foreach (var item in ViewBag.VideoData)
             {
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <iframe width="350" height="350" src="@item.VideoLink.Replace("watch?v=", "embed/")" title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="blog-content">
-                            <div class="title-blog" style="text-align:center;">
-                                <h3>@item.VideoTitle</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
+<div class="col-md-6 col-lg-4 col-xl-4">
+    <div class="blog-box">
+        <div class="blog-img">
+            <iframe width="350" height="350" src="@item.VideoLink.Replace("watch?v=", "embed/")" title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+        <div class="blog-content">
+            <div class="title-blog" style="text-align:center;">
+                <h3>@item.VideoTitle</h3>
+            </div>
+        </div>
+    </div>
+</div>      }
 
 
         </div>
     </div>
 </div>
-<!-- End Blog  -->
-<!-- Start Instagram Feed  -->
-<div class="instagram-box">
-    <div class="main-instagram owl-carousel owl-theme">
-        @foreach (var item in ViewBag.ImageDatas)
-        {
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="Uploads/@item.Image" class="img-fluid" alt="Image" height="400px;" width="400px">
-
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Darshan Darshan</h1>
                 </div>
             </div>
-        }
+        </div>
+        <div class="row">
+            @foreach (var item in ViewBag.ImageDatas)
+            {
+<div class="col-md-3 col-lg-3 col-sm-3">
+    <div class="blog-box">
+        <div class="blog-img">
+            <img src="Uploads/@item.Image" class="img-fluid" alt="Image">
+        </div>
+    </div>
+</div>      }
+
+
+        </div>
     </div>
 </div>
-<!-- End Instagram Feed  -->
-<!-- Start Footer  -->
